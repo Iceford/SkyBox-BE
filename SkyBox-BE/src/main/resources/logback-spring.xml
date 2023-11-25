@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--扫描配置文件的时间间隔为10分钟-->
+<configuration scan="true" scanPeriod="10 minutes">
+    <!--一个名为"stdot"的日志输出目标，类型为ConsoleAppender，表示将日志输出到控制台-->
+    <appender name="stdot" class="ch.qos.logback.core.ConsoleAppender">
+        <!--定义了日志输出的格式，使用PatternLayout布局-->
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <!--指定了日志输出的格式模式-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,GMT+8} [%p][%c][%M][%L]-> %m%n</pattern>
+        </layout>
+    </appender>
+
+    <!--两个Spring属性，用于获取日志路径和日志级别的值-->
+    <springProperty scope="context" name="log.path" source="project.folder"/>
+    <springProperty scope="context" name="log.root.level" source="log.root.level"/>
+    <!--两个Logback属性，分别表示日志文件夹名称和日志文件名-->
+    <property name="LOG_FOLDER" value="logs"/>
+    <property name="LOG_FILE_NAME" value="skybox.log"/>
+
+    <!--一个名为"file"的日志输出目标，类型为RollingFileAppender，表示将日志输出到文件-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文件的路径和文件名-->
+        <file>${log.path}/${LOG_FOLDER}/${LOG_FILE_NAME}</file>
+        <!--日志文件的滚动策略，即按时间滚动-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--滚动后的日志文件名的模式-->
+            <FileNamePattern>${log.path}/${LOG_FOLDER}/${LOG_FILE_NAME}.%d{yyyyMMdd}.%i</FileNamePattern>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+            <!--按时间和文件大小触发滚动的策略-->
+            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!--每个日志文件的最大大小为20MB-->
+                <MaxFileSize>20MB</MaxFileSize>
+                <!--保留的历史日志文件的最大数量为30个-->
+            </TimeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <!--日志的编码和输出格式-->
+        <encoder>
+            <charset>utf-8</charset>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss,GMT+8} [%p][%c][%M][%L]-> %m%n</pattern>
+        </encoder>
+        <!--每次启动应用程序时，都清空历史日志文件-->
+        <append>false</append>
+        <!--在多个应用程序实例写入同一个日志文件时，不需要同步-->
+        <prudent>false</prudent>
+    </appender>
+    <!--根日志记录器的日志级别-->
+    <root level="${log.root.level}">
+        <!--将日志输出到控制台和文件-->
+        <appender-ref ref="stdot"/>
+        <appender-ref ref="file"/>
+    </root>
+
+</configuration>
+
