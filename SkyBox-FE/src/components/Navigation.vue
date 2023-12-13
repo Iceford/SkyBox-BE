@@ -1,11 +1,11 @@
 <!--
  * @Description: 一个Vue组件的代码片段，用于显示一个顶部导航栏
  * @FilePath: \SkyBox-FE\src\components\Navigation.vue
- * @Author: hhrwvyy5654v huang_rongquan@outlook.com
+ * @Author: WhimsyQuester rongquanhuang01@gmail.com
  * @Date: 2023-11-14 15:30:21
  * @LastEditors: WhimsyQuester rongquanhuang01@gmail.com
  * @LastEditTime: 2023-12-04 09:32:04
- * Copyright (c) 2023 by hhrwvyy5654v , All Rights Reserved. 
+ * Copyright (c) 2023 by WhimsyQuester , All Rights Reserved. 
 -->
 <!-- 模板部分 -->
 <template>

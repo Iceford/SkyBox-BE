@@ -14,7 +14,7 @@
                 <span class="logo-icon">
                     <img src="@/assets/icon_32.png" alt="icon_32.png">
                 </span>
-                <span class="name">SuosuoDrive</span>
+                <span class="name">SkyBox</span>
             </div>
             <div class="right-panel">
                 <el-popover :width="800" trigger="click" v-model:visible="showUploader" :offset="20" transition="none"

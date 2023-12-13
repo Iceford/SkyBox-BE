@@ -5,40 +5,40 @@
  * @Date: 2023-11-14 15:30:30
  * @LastEditors: WhimsyQuester rongquanhuang01@gmail.com
  * @LastEditTime: 2023-11-14 15:30:35
- * Copyright (c) 2023 by hhrwvyy5654v , All Rights Reserved. 
+ * Copyright (c) 2023 by WhimsyQuester , All Rights Reserved. 
 -->
 <!-- 组件的模板 -->
 <template>
-    <div class="no-data">
-        <div class="iconfont icon-empty"></div>
-        <div class="msg">{{ msg }}</div>
-    </div>
+  <div class="no-data">
+    <div class="iconfont icon-empty"></div>
+    <div class="msg">{{ msg }}</div>
+  </div>
 </template>
 
 <!-- 组件的逻辑部分 -->
 <script setup>
 const props = defineProps({
-    msg: {
-        type: String,
-    },
+  msg: {
+    type: String,
+  },
 });
 </script>
 
 <!-- 组件的样式 -->
 <style lang="scss" scoped>
 .no-data {
-    text-align: center;
-    padding: 10px 0px;
+  text-align: center;
+  padding: 10px 0px;
 
-    .icon-empty {
-        font-size: 50px;
-        color: #bbb;
-    }
+  .icon-empty {
+    font-size: 50px;
+    color: #bbb;
+  }
 
-    .msg {
-        margin-top: 10px;
-        color: #909399;
-        font-size: 14px;
-    }
+  .msg {
+    margin-top: 10px;
+    color: #909399;
+    font-size: 14px;
+  }
 }
 </style>
